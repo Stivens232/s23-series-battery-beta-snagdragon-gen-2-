@@ -1,0 +1,13 @@
+{
+  "hotplug": true,
+  "governor": true,
+  "doze": true,
+  "saver": true,
+  "eco70": false,
+  "eco50": false,
+  "force60hz": false,
+  "gpu_save": false,
+  "gms_nap": false,
+  "kill_sync": false,
+  "bypass": false
+}

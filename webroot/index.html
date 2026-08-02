@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Battery Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+    <h2>Gestion de batería</h2>
+    
+    <!-- Toggles / Switches -->
+    <div class="toggle-list">
+      <label class="toggle-item">
+        <span>sueño profundo</span>
+        <input type="checkbox" id="doze">
+      </label>
+      
+      <label class="toggle-item">
+        <span>Regulador de la CPU</span>
+        <input type="checkbox" id="governor">
+      </label>
+
+      <label class="toggle-item">
+        <span>Ahorro GPU</span>
+        <input type="checkbox" id="gpu_save">
+      </label>
+
+      <label class="toggle-item">
+        <span>Forzar 60 Hz</span>
+        <input type="checkbox" id="force60hz">
+      </label>
+
+      <label class="toggle-item">
+        <span>dormir Google Play</span>
+        <input type="checkbox" id="gms_nap">
+      </label>
+
+      <label class="toggle-item">
+        <span>Matar Sincronización</span>
+        <input type="checkbox" id="kill_sync">
+      </label>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Métricas en Tiempo Real -->
+    <h3>Salud de la batería</h3>
+    <div class="metrics-grid">
+      <div class="metric-box">
+        <span class="metric-title">Salud de Batería</span>
+        <span class="metric-value" id="health-val">--%</span>
+      </div>
+      <div class="metric-box">
+        <span class="metric-title">corriente</span>
+        <span class="metric-value" id="current-val">-- mA</span>
+      </div>
+      <div class="metric-box">
+        <span class="metric-title">temperatura</span>
+        <span class="metric-value" id="temp-val">-- °C</span>
+      </div>
+      <div class="metric-box">
+        <span class="metric-title">tasa de refresco</span>
+        <span class="metric-value" id="fps-val">-- Hz</span>
+      </div>
+    </div>
+
+    <!-- Botón de Aplicar -->
+    <button class="btn-apply" id="apply-btn">Aplicar</button>
+  </div>
+
+  <script src="script.js"></script>
+<script>
+  document.getElementById("apply-btn").addEventListener("click", async (e) => {
+    const btn = e.target;
+    btn.disabled = true;
+    btn.innerText = "Aplicando...";
+    
+    if (typeof saveConfig === "function") {
+      await saveConfig();
+    }
+    
+    btn.disabled = false;
+    btn.innerText = "Aplicar";
+  });
+</script>
+</body>
+</html>
